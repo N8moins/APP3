@@ -5,12 +5,13 @@
  * Description: gestionnaire de tests pour l'application Graphicus. Ce
  *    fichier fait partie de la distribution de Graphicus.
 ********/
-#include "tests.h"
 
-using namespace std;
+#include <QApplication>
+#include "graphicus_Interface.h"
 
-int main()
+int main(int argc, char** argv)
 {
-   return 0;
+	QApplication app(argc, argv);
+	graphicus_Interface gui("TestGraphicusGUI 1.0");
+	return app.exec();
 }
-
