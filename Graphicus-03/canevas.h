@@ -34,6 +34,8 @@ public:
    bool activerCouche(int index);
    bool desactiverCouche(int index);
 
+   Couche getCouche(int index);
+
    bool ajouterForme(Forme *p_forme);
    bool retirerForme(int index);
 

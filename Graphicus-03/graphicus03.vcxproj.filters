@@ -27,6 +27,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="canevas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="couche.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Formes\forme.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="graphicus-03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
