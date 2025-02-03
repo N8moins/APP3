@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Uni_Sherb\\Session_2_HV2025\\APP3\\Graphicus-03-cs\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{533B6A6B-3E39-43B0-B423-8692098107AF}|Graphicus-03-cs\\Graphicus-03-cs.vcxproj|C:\\Uni_Sherb\\Session_2_HV2025\\APP3\\Graphicus-03-cs\\Graphicus-03-cs\\Graphicus-03-cs.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{533B6A6B-3E39-43B0-B423-8692098107AF}|Graphicus-03-cs\\Graphicus-03-cs.vcxproj|solutionrelative:Graphicus-03-cs\\Graphicus-03-cs.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Graphicus-03-cs.cpp",
+              "DocumentMoniker": "C:\\Uni_Sherb\\Session_2_HV2025\\APP3\\Graphicus-03-cs\\Graphicus-03-cs\\Graphicus-03-cs.cpp",
+              "RelativeDocumentMoniker": "Graphicus-03-cs\\Graphicus-03-cs.cpp",
+              "ToolTip": "C:\\Uni_Sherb\\Session_2_HV2025\\APP3\\Graphicus-03-cs\\Graphicus-03-cs\\Graphicus-03-cs.cpp",
+              "RelativeToolTip": "Graphicus-03-cs\\Graphicus-03-cs.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-02-03T17:42:29.773Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
