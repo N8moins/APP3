@@ -142,10 +142,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="canevas.cpp" />
+    <ClCompile Include="Formes\carre.cpp" />
+    <ClCompile Include="Formes\cercle.cpp" />
     <ClCompile Include="couche.cpp" />
     <ClCompile Include="Formes\forme.cpp" />
     <ClCompile Include="graphicus-03.cpp" />
     <ClCompile Include="graphicus_Interface.cpp" />
+    <ClCompile Include="Formes\rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="graphicus_Interface.h" />

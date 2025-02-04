@@ -19,10 +19,10 @@ public:
 	graphicus_Interface(const char *theName = nullptr);
 	//void coucheTranslater(int deltaX, int deltaY);
 	void ajouterCarre(int x, int y, int cote);
-	//void ajouterCercle(int x, int y, int rayon);
-	//void ajouterRectangle(int x, int y, int long_x, int long_y);
+	void ajouterCercle(int x, int y, int rayon);
+	void ajouterRectangle(int x, int y, int long_x, int long_y);
 	
-	//void reinitialiserCanevas();
+	void reinitialiserCanevas();
 	
 	void coucheAjouter();
 	//void coucheRetirer();
@@ -36,6 +36,7 @@ public:
 	//void formePrecedente();
 	//void formeSuivante();
 	//void formeDerniere();
+	void preDraw();
 
 private:
 	Canevas* canevas = new Canevas();

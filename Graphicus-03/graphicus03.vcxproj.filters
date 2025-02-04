@@ -30,6 +30,12 @@
     <ClCompile Include="canevas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Formes\carre.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Formes\cercle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="couche.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -40,6 +46,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="graphicus_Interface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Formes\rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
