@@ -11,6 +11,7 @@
 #define FORME_H
 
 #include <iostream>
+#include <string>
 #include "../coordonnee.h"
 
 using namespace std;
@@ -24,7 +25,7 @@ public:
   virtual Coordonnee getAncrage();
   virtual void setAncrage(Coordonnee c);
   virtual double aire() = 0;
-  virtual void afficher(ostream &s) = 0;
+  virtual string afficher() = 0;
 
 protected:
   Coordonnee ancrage;

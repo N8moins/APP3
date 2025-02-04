@@ -5,6 +5,7 @@
  * Description: Implementation des methodes de la classe Rectangle.
  */
 
+#include <sstream>
 #include "rectangle.h"
 
 Rectangle::Rectangle(int x, int y, int l, int h) : Forme(x, y), largeur(l), hauteur(h)
@@ -18,8 +19,12 @@ Rectangle::~Rectangle()
 double Rectangle::aire() {
     return largeur * hauteur;
 }
-void Rectangle::afficher(ostream &s)
+string Rectangle::afficher()
 {
-    s << "Rectangle (x=" << ancrage.x << ", y=" << ancrage.y <<
-    ", l=" << largeur << ", h=" << hauteur << ", aire=" << aire() << ")" << endl;
+    ostringstream os;
+
+    os << "R " << ancrage.x << " " << ancrage.y <<
+    " " << largeur << " " << hauteur << endl;
+    
+    return os.str().c_str();
 }

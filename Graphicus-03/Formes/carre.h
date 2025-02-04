@@ -10,6 +10,7 @@
 #define CARRE_H
 
 #include <iostream>
+#include <string>
 #include "rectangle.h"
 
 using namespace std;
@@ -19,7 +20,7 @@ class Carre : public Rectangle
     public:
         Carre(int x = 0, int y = 0, int cote = 1);
         ~Carre();
-        void afficher(ostream &s);
+        string afficher();
         double aire();
     protected:
         int cote;

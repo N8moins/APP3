@@ -10,6 +10,7 @@
 #define RECTANGLE_H
 
 #include <iostream>
+#include <string>
 #include "forme.h"
 
 using namespace std;
@@ -19,7 +20,7 @@ class Rectangle : public Forme
     public:
         Rectangle(int x = 0, int y = 0, int l = 1, int h = 2);
         virtual ~Rectangle();
-        virtual void afficher(ostream &s);
+        virtual string afficher();
         virtual double aire();
     protected:
         int largeur;

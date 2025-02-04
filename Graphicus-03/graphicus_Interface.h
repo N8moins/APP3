@@ -17,7 +17,7 @@ class graphicus_Interface : public GraphicusGUI
 {
 public:
 	graphicus_Interface(const char *theName = nullptr);
-	//void coucheTranslater(int deltaX, int deltaY);
+	void coucheTranslater(int deltaX, int deltaY);
 	void ajouterCarre(int x, int y, int cote);
 	void ajouterCercle(int x, int y, int rayon);
 	void ajouterRectangle(int x, int y, int long_x, int long_y);
@@ -25,12 +25,12 @@ public:
 	void reinitialiserCanevas();
 	
 	void coucheAjouter();
-	//void coucheRetirer();
-	//void retirerForme();
-	//void couchePremiere();
-	//void couchePrecedente();
-	//void coucheSuivante();
-	//void coucheDerniere();
+	void coucheRetirer();
+	void retirerForme();
+	void couchePremiere();
+	void couchePrecedente();
+	void coucheSuivante();
+	void coucheDerniere();
 	
 	//void formePremiere();
 	//void formePrecedente();

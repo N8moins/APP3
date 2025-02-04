@@ -7,6 +7,7 @@
 
 
 #include "cercle.h"
+#include <sstream>
 
 Cercle::Cercle(int x, int y, int rayon) : Forme(x, y), rayon(rayon)
 {
@@ -21,7 +22,10 @@ double Cercle::aire()
     return 3.14159 * rayon * rayon;
 }
 
-void Cercle::afficher(std::ostream& s) {
-    s << "Cercle (x=" << ancrage.x << ", y=" << ancrage.y <<
-         ", r=" << rayon << ", aire=" << aire() << ")" << endl;
+string Cercle::afficher() {
+    ostringstream os;
+
+    os << "C " << ancrage.x << " " << ancrage.y <<
+         " " << rayon << endl;
+    return os.str().c_str();
 }

@@ -9,32 +9,29 @@
  ********/
 
 #include "couche.h"
+#include "string"
 
 Couche::Couche()
 {
-    // etat = INITIALISE;
-    for (int i = 0; i < MAX_FORMES; i++)
-        formes[i] = nullptr;
 }
 
 Couche::~Couche()
 {
     for (int i = 0; i < count; i++)
-        if (formes[i] != nullptr)
-            delete formes[i];
+        if (formes->Get(i) != nullptr)
+            delete formes->Get(i);
 }
 
 bool Couche::ajouterForme(Forme *forme)
 {
     if (etat != Couche::Etat::actif)
         return false;
-
-    if (count < MAX_FORMES)
-    {
-        formes[count] = forme;
-        count++;
-        return true;
-    }
+   
+    formes->Add(forme);
+    count++;
+    courante = formes->Count();
+    return true;
+    
     return false;
 }
 
@@ -45,23 +42,29 @@ Couche::Etat Couche::getEtat()
 
 Forme *Couche::supprimerForme(int index)
 {
-    if (index >= MAX_FORMES || index < 0)
+    if (index >= formes->Count())
         return nullptr;
-    if (formes[index] == nullptr)
+    if (formes->Get(index) == nullptr)
         return nullptr;
     if (etat != Couche::Etat::actif)
         return nullptr;
+    if (index < 0)
+        index = courante;
+    if (formes->Count() == 0)
+        return nullptr;
 
-    Forme *pForme = (formes[index]);
+    Forme *pForme = (formes->Get(index));
 
-    formes[index] = nullptr;
+    Forme* f  = formes->Get(index);
 
     for (int i = 0; i + index < count; i++)
     {
         formes[index + i] = formes[index + i + 1];
     }
     
-    formes[MAX_FORMES - 1] = nullptr;
+    f = formes->Get(formes->Count() - 1);
+    f = nullptr;
+
     count--;
 
     return pForme;
@@ -69,13 +72,13 @@ Forme *Couche::supprimerForme(int index)
 
 Forme *Couche::getForme(int index)
 {
-    if (index >= MAX_FORMES || index < 0)
+    if (index >= formes->Count()|| index < 0)
         return nullptr;
 
-    if (formes[index] == nullptr)
+    if (formes->Get(index) == nullptr)
         return nullptr;
 
-    return formes[index];
+    return formes->Get(index);
 }
 
 double Couche::aireTotale()
@@ -84,7 +87,7 @@ double Couche::aireTotale()
 
     for (int i = 0; i < count; i++)
     {
-        total += formes[i]->aire();
+        total += formes->Get(i)->aire();
     }
 
     return total;
@@ -94,15 +97,12 @@ bool Couche::translater(int deltaX, int deltaY)
 {
     try
     {
-        for (int i = 0; i < MAX_FORMES; i++)
+        for (int i = 0; i < formes->Count(); i++)
         {
-            Forme* forme = formes[i];
+            Forme* forme = formes->Get(i);
             if(forme != nullptr)
                 forme->translater(deltaX, deltaY);
         }
-
-        // ancrage.x += deltaX;
-        // ancrage.y += deltaY;
 
         return true;
     }
@@ -120,7 +120,7 @@ bool Couche::reinitialiser()
     etat = Couche::Etat::Initialise;
 
     for (int i = 0; i < count; i++)
-        delete formes[i];
+        delete formes->Get(i);
 
     count = 0;
 
@@ -136,22 +136,22 @@ bool Couche::changerEtat(Etat etat)
     return true;
 }
 
-void Couche::afficherCouche(ostream &s)
+string Couche::afficherCouche()
 {
-    s << "État: " << ((etat == Couche::Etat::Initialise) ? "initialisée" : (etat == Couche::Etat::actif) ? "active"
-                                                                                                         : "inactive")
-      << endl;
+    string s;
+
     if (!count)
     {
-        s << "Couche: vide" << endl;
+        return "";
     }
     else
     {
         int i = 0;
         while (i < count)
         {
-            formes[i]->afficher(s);
+            s += formes->Get(i)->afficher();
             i++;
         }
     }
+    return s;
 }

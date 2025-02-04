@@ -15,10 +15,8 @@
 
 #include "Formes/forme.h"
 #include "coordonnee.h"
-
-const int MAX_FORMES = 5;
-
-// A completer
+#include "string"
+#include "./VectorLib/vector.h"
 
 class Couche
 {
@@ -39,14 +37,15 @@ public:
   bool translater(int deltaX, int deltaY);
   bool reinitialiser();
   bool changerEtat(Etat etat);
-  void afficherCouche(ostream &s);
+  string afficherCouche();
   Etat getEtat();
 
 private:
-  Forme *formes[MAX_FORMES];
+    Vector<Forme> *formes  = new Vector<Forme>();
     Coordonnee ancrage;
     Etat etat;
     int count = 0;
+    int courante;
 };
 
 #endif
