@@ -9,7 +9,8 @@
  ********/
 
 #include "couche.h"
-#include "string"
+#include <string>
+#include <sstream>
 
 Couche::Couche()
 {
@@ -138,8 +139,9 @@ bool Couche::changerEtat(Etat etat)
 
 string Couche::afficherCouche()
 {
-    string s;
-
+    ostringstream os;
+    os << "L " << (etat == Couche::Etat::actif ? "a" :
+        etat == Couche::Etat::desactive ? "x" : "i") << endl;
     if (!count)
     {
         return "";
@@ -149,9 +151,9 @@ string Couche::afficherCouche()
         int i = 0;
         while (i < count)
         {
-            s += formes->Get(i)->afficher();
+            os << formes->Get(i)->afficher();
             i++;
         }
     }
-    return s;
+    return os.str().c_str();
 }

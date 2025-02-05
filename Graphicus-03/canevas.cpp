@@ -240,8 +240,6 @@ ostringstream Canevas::afficher()
     {
         for (int i = 0; i < couches->Count(); i++)
         {
-            os << "L " << (couches->Get(i)->getEtat() == Couche::Etat::actif ? "a" :
-                couches->Get(i)->getEtat() == Couche::Etat::desactive ? "x" : "i") << endl;
             os << couches->Get(i)->afficherCouche();
         }
     }

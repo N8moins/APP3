@@ -43,7 +43,6 @@ void graphicus_Interface::ajouterRectangle(int x, int y, int l, int h)
 void graphicus_Interface::ajouterCercle(int x, int y, int r)
 {
 	canevas->ajouterForme(new Cercle(x, y, r));
-	cout << "Here" << endl;
 	preDraw();
 }
 
