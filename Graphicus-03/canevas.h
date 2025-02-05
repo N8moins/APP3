@@ -49,7 +49,7 @@ public:
    ostringstream afficher();
 
 private:
-    Vector<Couche>* couches = new Vector<Couche>();
+    Vector<Couche*> couches;
     Couche* active;
 };
 

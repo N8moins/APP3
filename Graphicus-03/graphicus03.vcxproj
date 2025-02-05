@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{EF2514F2-3FB2-3D1D-8299-FF5F8BAFA46E}</ProjectGuid>
+    <ProjectGuid>{FA67F703-7BFC-3B6C-9FF1-1CE3E99A5628}</ProjectGuid>
     <RootNamespace>graphicus03</RootNamespace>
     <Keyword>Qt4VSv1.0</Keyword>
     <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
@@ -58,7 +58,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;GraphicusGUI;..\..\..\..\Qt\6.8.2\msvc2022_64\include;..\..\..\..\Qt\6.8.2\msvc2022_64\include\QtWidgets;..\..\..\..\Qt\6.8.2\msvc2022_64\include\QtGui;..\..\..\..\Qt\6.8.2\msvc2022_64\include\QtCore;debug;/include;..\..\..\..\Qt\6.8.2\msvc2022_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;GraphicusGUI;C:\Qt\6.8.2\msvc2022_64\include;C:\Qt\6.8.2\msvc2022_64\include\QtWidgets;C:\Qt\6.8.2\msvc2022_64\include\QtGui;C:\Qt\6.8.2\msvc2022_64\include\QtCore;debug;/include;C:\Qt\6.8.2\msvc2022_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -utf-8 -w34100 -w34189 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>debug\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -98,7 +98,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">
     <ClCompile>
-      <AdditionalIncludeDirectories>.;GraphicusGUI;..\..\..\..\Qt\6.8.2\msvc2022_64\include;..\..\..\..\Qt\6.8.2\msvc2022_64\include\QtWidgets;..\..\..\..\Qt\6.8.2\msvc2022_64\include\QtGui;..\..\..\..\Qt\6.8.2\msvc2022_64\include\QtCore;release;/include;..\..\..\..\Qt\6.8.2\msvc2022_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;GraphicusGUI;C:\Qt\6.8.2\msvc2022_64\include;C:\Qt\6.8.2\msvc2022_64\include\QtWidgets;C:\Qt\6.8.2\msvc2022_64\include\QtGui;C:\Qt\6.8.2\msvc2022_64\include\QtCore;release;/include;C:\Qt\6.8.2\msvc2022_64\mkspecs\win32-msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>-Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -utf-8 -w34100 -w34189 -w44456 -w44457 -w44458 %(AdditionalOptions)</AdditionalOptions>
       <AssemblerListingLocation>release\</AssemblerListingLocation>
       <BrowseInformation>false</BrowseInformation>
@@ -156,8 +156,8 @@
   <ItemGroup>
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <FileType>Document</FileType>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">..\..\..\..\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cl -BxC:\Qt\6.8.2\msvc2022_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -Zi -MDd -std:c++17 -utf-8 -E ..\..\..\..\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">C:\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">cl -BxC:\Qt\6.8.2\msvc2022_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -Zi -MDd -std:c++17 -utf-8 -E C:\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;debug\moc_predefs.h</Command>
       <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">Generate moc_predefs.h</Message>
       <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">debug\moc_predefs.h;%(Outputs)</Outputs>
       <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">true</ExcludedFromBuild>
@@ -165,8 +165,8 @@
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Debug|x64&apos;">true</ExcludedFromBuild>
-      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">..\..\..\..\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
-      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cl -BxC:\Qt\6.8.2\msvc2022_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -O2 -MD -std:c++17 -utf-8 -E ..\..\..\..\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
+      <AdditionalInputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">C:\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp;%(AdditionalInputs)</AdditionalInputs>
+      <Command Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">cl -BxC:\Qt\6.8.2\msvc2022_64\bin\qmake.exe -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -permissive- -Zc:__cplusplus -Zc:externConstexpr -O2 -MD -std:c++17 -utf-8 -E C:\Qt\6.8.2\msvc2022_64\mkspecs\features\data\dummy.cpp 2&gt;NUL &gt;release\moc_predefs.h</Command>
       <Message Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">Generate moc_predefs.h</Message>
       <Outputs Condition="&apos;$(Configuration)|$(Platform)&apos;==&apos;Release|x64&apos;">release\moc_predefs.h;%(Outputs)</Outputs>
     </CustomBuild>

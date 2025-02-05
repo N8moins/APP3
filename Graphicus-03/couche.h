@@ -41,11 +41,13 @@ public:
   Etat getEtat();
 
 private:
-    Vector<Forme> *formes  = new Vector<Forme>();
+    Vector<Forme*> formes;
     Coordonnee ancrage;
     Etat etat;
     int count = 0;
     int courante;
+
+    friend std::istream& operator>>(std::istream& is, Couche layer);
 };
 
 #endif
