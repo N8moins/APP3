@@ -10,6 +10,7 @@
 #define CERCLE_H
 
 #include <iostream>
+#include <string>
 #include "forme.h"
 
 using namespace std;
@@ -19,7 +20,7 @@ class Cercle : public Forme
     public:
         Cercle(int x = 0, int y = 0, int rayon = 1);
         ~Cercle();
-        void afficher(ostream &s);
+        string afficher();
         double aire();
     protected:
         int rayon;

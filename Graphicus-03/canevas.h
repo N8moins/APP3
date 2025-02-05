@@ -12,7 +12,7 @@
 #ifndef CANEVAS_H
 #define CANEVAS_H
 
-#include <iostream>
+#include <sstream>
 #include "VectorLib/vector.h"
 #include "Formes/forme.h"
 #include "couche.h"
@@ -26,7 +26,7 @@ public:
    ~Canevas();
 
    bool ajouterCouche();
-   bool retirerCouche(int index);
+   bool retirerCouche(int index = -1);
 
    bool reinitialiser();
    bool reinitialiserCouche(int index);
@@ -34,12 +34,19 @@ public:
    bool activerCouche(int index);
    bool desactiverCouche(int index);
 
+   Couche getCouche(int index);
+
    bool ajouterForme(Forme *p_forme);
-   bool retirerForme(int index);
+   bool retirerForme(int index = -1);
+
+   bool coucheSuivante();
+   bool couchePrecedente();
+
+   bool setCouche(int index);
 
    double aire();
    bool translater(int deltaX, int deltaY);
-   void afficher(ostream &s);
+   ostringstream afficher();
 
 private:
     Vector<Couche>* couches = new Vector<Couche>();

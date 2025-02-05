@@ -8,7 +8,9 @@
  *    canevas.h. Ce fichier fait partie de la distribution de Graphicus.
  ********/
 
+#include <sstream>
 #include "canevas.h"
+#include "couche.h"
 
 using namespace std;
 
@@ -40,19 +42,37 @@ bool Canevas::ajouterCouche()
 
 bool Canevas::retirerCouche(int index)
 {
-    if (index < 0 || index > couches->Count())
+    if (index > couches->Count())
         return false;
+
 
     if (couches->IsEmpty())
         return false;
+
+
+    if (index < 0) {
+        for (int i = 0; i < couches->Count(); i++) {
+            if (active == couches->Get(i)) {
+                index = i;
+            }
+        }
+    }
+
+    if (index == -1) {
+        return false;
+    }
 
     Couche *c = couches->Get(index);
 
     c->reinitialiser();
 
+    cout << "Couche " << index << " retiree" << endl;
+
     couches->Remove(index);
 
-    cout << "Couche " << index << " retiree" << endl;
+
+
+    c = nullptr;
 
     return true;
 }
@@ -91,6 +111,8 @@ bool Canevas::reinitialiserCouche(int index)
 
 bool Canevas::activerCouche(int index)
 {
+    if (index == -1)
+        index = couches->Count() - 1;
     if (index >= couches->Count() || index < 0)
         return false;
     if (couches->Get(index) == active)
@@ -101,6 +123,50 @@ bool Canevas::activerCouche(int index)
     active->changerEtat(Couche::Etat::desactive);
     active = couches->Get(index);
     return true;
+}
+
+bool Canevas::coucheSuivante()
+{
+    for (int i = 0; i < couches->Count(); i++) {
+        if (active == couches->Get(i)) {
+            if (i != couches->Count() - 1) {
+                active->changerEtat(Couche::Etat::desactive);
+                active = couches->Get(i + 1);
+                active->changerEtat(Couche::Etat::actif);
+            }
+            return true;
+        }
+    }
+
+    if (couches->Count() > 0) {
+        active = couches->Get(0);
+        active->changerEtat(Couche::Etat::actif);
+        return true;
+    }
+
+    return false;
+}
+
+bool Canevas::couchePrecedente()
+{
+    for (int i = 0; i < couches->Count(); i++) {
+        if (active == couches->Get(i)) {
+            if (i != 0) {
+                active->changerEtat(Couche::Etat::desactive);
+                active = couches->Get(i-1);
+                active->changerEtat(Couche::Etat::actif);
+                return true;
+            }
+        }
+    }
+
+    if (couches->Count() > 0) {
+        active = couches->Get(0);
+        active->changerEtat(Couche::Etat::actif);
+        return true;
+    }
+
+    return false;
 }
 
 bool Canevas::desactiverCouche(int index)
@@ -135,6 +201,8 @@ bool Canevas::ajouterForme(Forme *p_forme)
 
 bool Canevas::retirerForme(int index)
 {
+    if (couches->Count() == 0)
+        return false;
     if (active->getEtat() != Couche::Etat::actif)
         return false;
 
@@ -161,18 +229,19 @@ bool Canevas::translater(int deltaX, int deltaY)
     return active->translater(deltaX, deltaY);
 }
 
-void Canevas::afficher(ostream &s)
+ostringstream Canevas::afficher()
 {
+    ostringstream os;
     if (couches->IsEmpty())
     {
-        s << "----- Aucune couche -----" << endl;
+        return os;
     }
     else
     {
         for (int i = 0; i < couches->Count(); i++)
         {
-            s << "----- Couche " << i << "-----" << endl;
-            couches->Get(i)->afficherCouche(s);
+            os << couches->Get(i)->afficherCouche();
         }
     }
+    return os;
 }
