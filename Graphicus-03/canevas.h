@@ -45,6 +45,7 @@ public:
    bool formeSuivante();
    bool formePrecedente();
    bool formeActive(int index);
+   void modePile(bool mode);
 
    bool setCouche(int index);
 
@@ -53,6 +54,7 @@ public:
    ostringstream afficher();
 
 private:
+    bool pile = false;
     Vector<Couche*> couches;
 };
 

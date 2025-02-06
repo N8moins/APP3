@@ -227,6 +227,11 @@ bool Canevas::retirerForme(int index)
     return true;
 }
 
+void Canevas::modePile(bool mode)
+{
+    pile = mode;
+}
+
 double Canevas::aire()
 {
     double aire = 0;
@@ -250,6 +255,8 @@ Vector<Couche*>& Canevas::getCouches() {
     return couches;
 }
 
+
+
 ostringstream Canevas::afficher()
 {
     ostringstream os;
@@ -259,9 +266,19 @@ ostringstream Canevas::afficher()
     }
     else
     {
-        for (int i = 0; i < couches.Count(); i++)
+        if (!pile)
         {
-            os << couches[i]->afficherCouche();
+            for (int i = (couches.Count()-1); i >= 0; i--)
+            {
+                os << couches[i]->afficherCouche();
+            }
+        }
+        else
+        {    
+            for (int i = 0; i < couches.Count(); i++)
+            {
+                os << couches[i]->afficherCouche();
+            }
         }
     }
     return os;

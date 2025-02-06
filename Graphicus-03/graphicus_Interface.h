@@ -40,6 +40,8 @@ public:
 	void formeDerniere();
 	void preDraw();
 
+	void modePileChange(bool mode);
+
 private:
 	Canevas canevas;
 };
