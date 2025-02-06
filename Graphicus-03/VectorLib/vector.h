@@ -206,15 +206,18 @@ std::ostream& operator<<(std::ostream& os, const Vector<T>& vector) {
 
 template<class T>
 std::istream& operator>>(std::istream& is, Vector<T *>& vector) {
-    std::stringstream ss;
-    ss << is.rdbuf();
-    std::string text = ss.str();
-    Vector<std::string> values = vector.Split(text, 'L');
-    for (int i = 0; i < values.Count(); i++){
-        values[i] >> T;
-        vector += T;
-    }
+    std::string s;
 
+    int i = 0;
+    char c;
+    while ((c = is.get()) != EOF){
+        std::cout << c;
+        if (c == 'L') {
+            vector += new T();
+            is >> vector[i];
+            ++i;
+        }
+    }
     return is;
 }
 

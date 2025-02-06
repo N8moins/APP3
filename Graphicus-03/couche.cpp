@@ -193,17 +193,18 @@ std::ostream& operator<<(std::ostream& os, Couche* layer) {
 
 
 std::istream& operator>>(std::istream& is, Couche* layer) {
-    std::string line;
-    while (std::getline(is, line)) {
-
-        if (line.find('a') != std::string::npos)
+    char line;
+    layer = new Couche();
+    while (is.get(line)) {
+        std::cout << line;
+        if (line == 'a')
             layer->changerEtat(Couche::Etat::actif);
-        else if (line.find('i') != std::string::npos)
+        else if (line == 'i')
             layer->changerEtat(Couche::Etat::Initialise);
-        else if (line.find('x') != std::string::npos)
+        else if (line == 'x')
             layer->changerEtat(Couche::Etat::desactive);
-        else if (line.find('K') != std::string::npos) {
-            Vector<int> values = Split(line, ' ');
+        else if (line == 'K') {
+            /*Vector<int> values = Split(line, ' ');
             int x = values[0];
             int y = values[1];
             int c = values[2];
@@ -228,8 +229,10 @@ std::istream& operator>>(std::istream& is, Couche* layer) {
             int r = values[2];
 
             Cercle* circle = new Cercle(x, y, r);
-            layer->ajouterForme(circle);
+            layer->ajouterForme(circle);*/
         }
+        else
+            break;
     }
     return is;
 }

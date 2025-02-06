@@ -169,4 +169,5 @@ bool graphicus_Interface::ouvrirFichier(const char* fileName) {
 	{
 		return false;
 	}
+	preDraw();
 }
