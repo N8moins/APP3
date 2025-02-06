@@ -121,6 +121,12 @@ void graphicus_Interface::formePrecedente()
 	preDraw();
 }
 
+void graphicus_Interface::modePileChange(bool mode)
+{
+	canevas.modePile(mode);
+	preDraw();
+}
+
 void graphicus_Interface::preDraw() 
 {
 	ostringstream os;
