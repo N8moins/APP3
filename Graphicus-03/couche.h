@@ -37,6 +37,11 @@ public:
   bool translater(int deltaX, int deltaY);
   bool reinitialiser();
   bool changerEtat(Etat etat);
+
+  bool formePrecedente();
+  bool formeSuivante();
+  bool setActive(int index);
+
   string afficherCouche();
   Etat getEtat();
 
@@ -44,8 +49,6 @@ private:
     Vector<Forme*> formes;
     Coordonnee ancrage;
     Etat etat;
-    int count = 0;
-    int courante;
 
     friend std::ostream& operator<<(std::ostream& os, Couche* layer);
     friend std::istream& operator>>(std::istream& is, Couche layer);

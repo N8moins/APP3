@@ -33,7 +33,7 @@ bool Canevas::ajouterCouche()
 
     if (tmp->getEtat() == Couche::Etat::actif)
     {
-        active = tmp;
+        couches.SetActive(couches.Count());
     }
 
     couches += tmp;
@@ -53,7 +53,7 @@ bool Canevas::retirerCouche(int index)
 
     if (index < 0) {
         for (int i = 0; i < couches.Count(); i++) {
-            if (active == couches[i]) {
+            if (couches.GetActive() == couches[i]) {
                 index = i;
             }
         }
@@ -71,8 +71,6 @@ bool Canevas::retirerCouche(int index)
 
     couches.Remove(index);
 
-
-    // TODO -- A CHANGER
     c = nullptr;
 
     return true;
@@ -102,7 +100,7 @@ bool Canevas::reinitialiserCouche(int index)
     if (index >= couches.Count() || index < 0)
         return false;
 
-    if (couches[index] == active)
+    if (couches[index] == couches.GetActive())
         return false;
 
     couches[index]->reinitialiser();
@@ -116,58 +114,76 @@ bool Canevas::activerCouche(int index)
         index = couches.Count() - 1;
     if (index >= couches.Count() || index < 0)
         return false;
-    if (couches[index] == active)
+    if (couches[index] == couches.GetActive())
         return false;
 
     couches[index]->changerEtat(Couche::Etat::actif);
 
-    active->changerEtat(Couche::Etat::desactive);
-    active = couches[index];
+    couches.GetActive()->changerEtat(Couche::Etat::desactive);
+    couches.SetActive(index);
     return true;
 }
 
 bool Canevas::coucheSuivante()
 {
-    for (int i = 0; i < couches.Count(); i++) {
-        if (active == couches[i]) {
-            if (i != couches.Count() - 1) {
-                active->changerEtat(Couche::Etat::desactive);
-                active = couches[i + 1];
-                active->changerEtat(Couche::Etat::actif);
-            }
-            return true;
-        }
-    }
+    if (couches.Count() == 0)
+        return false;
 
-    if (couches.Count() > 0) {
-        active = couches[0];
-        active->changerEtat(Couche::Etat::actif);
-        return true;
-    }
+    Couche *c = couches.GetActive();
+    ++couches;
+    if (c != couches.GetActive())
+        c->changerEtat(Couche::Etat::desactive);
+        couches.GetActive()->changerEtat(Couche::Etat::actif);
 
     return false;
 }
 
 bool Canevas::couchePrecedente()
 {
-    for (int i = 0; i < couches.Count(); i++) {
-        if (active == couches[i]) {
-            if (i != 0) {
-                active->changerEtat(Couche::Etat::desactive);
-                active = couches[i-1];
-                active->changerEtat(Couche::Etat::actif);
-                return true;
-            }
-        }
-    }
+    if (couches.Count() == 0)
+        return false;
 
-    if (couches.Count() > 0) {
-        active = couches[0];
-        active->changerEtat(Couche::Etat::actif);
-        return true;
-    }
+    Couche* c = couches.GetActive();
+    --couches;
+    if (c != couches.GetActive())
+        c->changerEtat(Couche::Etat::desactive);
+    couches.GetActive()->changerEtat(Couche::Etat::actif);
 
     return false;
+}
+
+bool Canevas::formeSuivante() {
+    if (couches.Count() == 0)
+        return false;
+
+    if (couches.GetActive() == nullptr) {
+        return false;
+    }
+
+    return couches.GetActive()->formeSuivante();
+}
+
+bool Canevas::formePrecedente() {
+    if (couches.Count() == 0)
+        return false;
+
+    if (couches.GetActive() == nullptr) {
+        return false;
+    }
+
+    return couches.GetActive()->formePrecedente();
+
+}
+
+bool Canevas::formeActive(int index) {
+    if (couches.Count() == 0)
+        return false;
+
+    if (couches.GetActive() == nullptr) {
+        return false;
+    }
+
+    return couches.GetActive()->setActive(index);
 }
 
 bool Canevas::desactiverCouche(int index)
@@ -194,20 +210,20 @@ bool Canevas::ajouterForme(Forme *p_forme)
         return false;
     }
 
-    if (active->getEtat() != Couche::Etat::actif)
+    if (couches.GetActive()->getEtat() != Couche::Etat::actif)
         return false;
 
-    return active->ajouterForme(p_forme);
+    return couches.GetActive()->ajouterForme(p_forme);
 }
 
 bool Canevas::retirerForme(int index)
 {
     if (couches.Count() == 0)
         return false;
-    if (active->getEtat() != Couche::Etat::actif)
+    if (couches.GetActive()->getEtat() != Couche::Etat::actif)
         return false;
 
-    active->supprimerForme(index);
+    couches.GetActive()->supprimerForme(index);
     return true;
 }
 
@@ -224,10 +240,10 @@ double Canevas::aire()
 
 bool Canevas::translater(int deltaX, int deltaY)
 {
-    if (active->getEtat() != Couche::Etat::actif)
+    if (couches.GetActive()->getEtat() != Couche::Etat::actif)
         return false;
 
-    return active->translater(deltaX, deltaY);
+    return couches.GetActive()->translater(deltaX, deltaY);
 }
 
 const Vector<Couche*> Canevas::getCouches() {

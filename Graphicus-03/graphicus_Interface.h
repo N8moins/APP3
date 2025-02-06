@@ -34,10 +34,10 @@ public:
 	void coucheSuivante();
 	void coucheDerniere();
 	
-	//void formePremiere();
-	//void formePrecedente();
-	//void formeSuivante();
-	//void formeDerniere();
+	void formePremiere();
+	void formePrecedente();
+	void formeSuivante();
+	void formeDerniere();
 	void preDraw();
 
 private:

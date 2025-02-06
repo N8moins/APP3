@@ -97,6 +97,30 @@ void graphicus_Interface::coucheRetirer()
 	preDraw();
 }
 
+void graphicus_Interface::formePremiere()
+{
+	canevas.formeActive(0);
+	preDraw();
+}
+
+void graphicus_Interface::formeDerniere()
+{
+	canevas.formeActive(-1);
+	preDraw();
+}
+
+void  graphicus_Interface::formeSuivante()
+{
+	canevas.formeSuivante();
+	preDraw();
+}
+
+void graphicus_Interface::formePrecedente()
+{
+	canevas.formePrecedente();
+	preDraw();
+}
+
 void graphicus_Interface::preDraw() 
 {
 	ostringstream os;

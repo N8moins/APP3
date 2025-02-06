@@ -34,7 +34,6 @@ public:
    bool activerCouche(int index);
    bool desactiverCouche(int index);
 
-   Couche getCouche(int index);
    const Vector<Couche*> getCouches();
 
    bool ajouterForme(Forme *p_forme);
@@ -42,6 +41,10 @@ public:
 
    bool coucheSuivante();
    bool couchePrecedente();
+
+   bool formeSuivante();
+   bool formePrecedente();
+   bool formeActive(int index);
 
    bool setCouche(int index);
 
@@ -51,7 +54,6 @@ public:
 
 private:
     Vector<Couche*> couches;
-    Couche* active;
 };
 
 #endif
