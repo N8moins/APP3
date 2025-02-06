@@ -140,7 +140,7 @@ bool graphicus_Interface::sauvegarderFichier(const char* fileName) {
 			file << canevas.getCouches();
 		}
 
-		std::cout << "saved successfuly" << std::endl;
+		std::cout << "saved successfully" << std::endl;
 		return true;
 	}
 	catch (const std::exception&)
