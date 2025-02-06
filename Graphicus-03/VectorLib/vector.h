@@ -196,7 +196,7 @@ Vector<int> Vector<T>::Split(std::string input, char divider) {
 template<class T>
 std::ostream& operator<<(std::ostream& os, const Vector<T>& vector) {
     for (int i = 0; i < vector.m_count; ++i) {
-        T* layer = vector.m_array[i];
+        T layer = *vector.m_array[i];
         os << layer << "\n";
     }
     return os << std::endl;
