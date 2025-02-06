@@ -163,11 +163,11 @@ bool graphicus_Interface::ouvrirFichier(const char* fileName) {
 			file >> canevas.getCouches();
 		}
 
+		preDraw();
 		return true;
 	}
 	catch (const std::exception&)
 	{
 		return false;
 	}
-	preDraw();
 }

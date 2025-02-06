@@ -193,46 +193,67 @@ std::ostream& operator<<(std::ostream& os, Couche* layer) {
 
 
 std::istream& operator>>(std::istream& is, Couche* layer) {
-    char line;
+    char c;
+    std::string number = "";
+    Vector<int> values;
     layer = new Couche();
-    while (is.get(line)) {
-        std::cout << line;
-        if (line == 'a')
+    while (is.get(c)) {
+        std::cout << c;
+        if (c == 'a')
             layer->changerEtat(Couche::Etat::actif);
-        else if (line == 'i')
+        else if (c == 'i')
             layer->changerEtat(Couche::Etat::Initialise);
-        else if (line == 'x')
+        else if (c == 'x')
             layer->changerEtat(Couche::Etat::desactive);
-        else if (line == 'K') {
-            /*Vector<int> values = Split(line, ' ');
-            int x = values[0];
-            int y = values[1];
-            int c = values[2];
+        else if (c == 'R') {
+            is.get(c);
+            while (c != '\n')
+            {
+                if (c == ' ' && number != "") {
+                    values += std::stoi(number);
+                }
+                else if (c != ' ') {
+                    number += c;
+                }
+                is.get(c);
+            }
 
-            Carre* square = new Carre(x, y, c);
-            layer->ajouterForme(square);
+            layer->ajouterForme(new Rectangle(values[0], values[1], values[2], values[3]));
         }
-        else if (line.find('R') != std::string::npos) {
-            Vector<int> values = Split(line, ' ');
-            int x = values[0];
-            int y = values[1];
-            int l = values[2];
-            int h = values[3];
+        else if (c == 'K') {
+            is.get(c);
+            while (c != '\n')
+            {
+                if (c == ' ' && number != "") {
+                    values += std::stoi(number);
+                    number = "";
+                }
+                else if (c != ' ') {
+                    number += c;
+                }
+                is.get(c);
+            }
+            values += std::stoi(number);
+            number = "";
+            layer->ajouterForme(new Carre(values[0], values[1], values[2]));
+        }
+        else if (c == 'C') {
+            is.get(c);
+            while (c != '\n')
+            {
+                if (c == ' ' && number != "") {
+                    values += std::stoi(number);
+                }
+                else if (c != ' ') {
+                    number += c;
+                }
+                is.get(c);
+            }
 
-            Rectangle* rect = new Rectangle(x, y, l, h);
-            layer->ajouterForme(rect);
+            layer->ajouterForme(new Rectangle(values[0], values[1], values[2]));
         }
-        else if (line.find('C') != std::string::npos) {
-            Vector<int> values = Split(line, ' ');
-            int x = values[0];
-            int y = values[1];
-            int r = values[2];
-
-            Cercle* circle = new Cercle(x, y, r);
-            layer->ajouterForme(circle);*/
-        }
-        else
-            break;
+        else if(c =='L' || c == EOF)
+            return is;
     }
     return is;
 }
