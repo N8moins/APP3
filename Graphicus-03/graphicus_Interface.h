@@ -39,7 +39,7 @@ public:
 	void preDraw();
 
 private:
-	Canevas* canevas = new Canevas();
+	Canevas canevas;
 };
 
 #endif // MONINTERFACE_H

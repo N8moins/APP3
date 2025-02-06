@@ -67,7 +67,8 @@ private:
 
 template<class T>
 T& Vector<T>::operator[] (int index) {
-    return *Get(index);
+    
+        return *Get(index);
 }
 
 template<class T>
@@ -87,7 +88,7 @@ bool Vector<T>::Add(T* value) {
         if (m_count == m_currentSize)
             Resize();
 
-        m_array[m_count] = value;
+        m_array[m_count] = new T(*value);
         m_count++;
     }
     catch (const std::exception& e) {

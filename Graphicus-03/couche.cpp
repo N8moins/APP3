@@ -17,6 +17,8 @@
 
 Couche::Couche()
 {
+    
+    etat = Couche::Etat::Initialise;
 }
 
 Couche::~Couche()

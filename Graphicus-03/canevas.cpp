@@ -24,7 +24,7 @@ Canevas::~Canevas()
 
 bool Canevas::ajouterCouche()
 {
-    Couche* tmp;
+    Couche* tmp = new Couche();
 
     if (couches.Count() == 0)
     {
@@ -37,6 +37,12 @@ bool Canevas::ajouterCouche()
     }
 
     couches += tmp;
+
+    for (int i = 0; i < couches.Count(); i++)
+    {
+        std::cout << couches[i]->afficherCouche();
+    }
+
     return true;
 }
 
