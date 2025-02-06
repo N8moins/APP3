@@ -27,8 +27,8 @@ Couche::~Couche()
 
 bool Couche::ajouterForme(Forme *forme)
 {
-    if (etat != Couche::Etat::actif)
-        return false;
+    //if (etat != Couche::Etat::actif)
+    //    return false;
    
     formes += forme;
     ++formes;
