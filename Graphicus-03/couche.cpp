@@ -23,9 +23,7 @@ Couche::Couche()
 
 Couche::~Couche()
 {
-    for (int i = 0; i < count; i++)
-        if (formes[i] != nullptr)
-            delete formes[i];
+    formes.Clear();
 }
 
 bool Couche::ajouterForme(Forme *forme)
@@ -34,8 +32,7 @@ bool Couche::ajouterForme(Forme *forme)
         return false;
    
     formes += forme;
-    count++;
-    courante = formes.Count();
+    ++formes;
     return true;
     
     return false;
@@ -54,24 +51,18 @@ Forme *Couche::supprimerForme(int index)
         return nullptr;
     if (etat != Couche::Etat::actif)
         return nullptr;
-    if (index < 0)
-        index = courante;
     if (formes.Count() == 0)
         return nullptr;
 
     Forme *pForme = (formes[index]);
 
+    if (index < 0)
+        pForme = formes.GetActive();
     Forme* f  = formes[index];
-
-    for (int i = 0; i + index < count; i++)
-    {
-        formes[index + i] = formes[index + i + 1];
-    }
     
     f = formes[formes.Count() - 1];
+    
     f = nullptr;
-
-    count--;
 
     return pForme;
 }
@@ -91,7 +82,7 @@ double Couche::aireTotale()
 {
     float total = 0;
 
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < formes.Count(); i++)
     {
         total += formes[i]->aire();
     }
@@ -125,10 +116,7 @@ bool Couche::reinitialiser()
 
     etat = Couche::Etat::Initialise;
 
-    for (int i = 0; i < count; i++)
-        delete formes[i];
-
-    count = 0;
+    formes.Clear();
 
     return true;
 }
@@ -147,14 +135,14 @@ string Couche::afficherCouche()
     ostringstream os;
     os << "L " << (etat == Couche::Etat::actif ? "a" :
         etat == Couche::Etat::desactive ? "x" : "i") << endl;
-    if (!count)
+    if (!formes.Count())
     {
         return os.str().c_str();
     }
     else
     {
         int i = 0;
-        while (i < count)
+        while (i < formes.Count())
         {
             os << formes[i]->afficher();
             i++;

@@ -44,8 +44,6 @@ private:
     Vector<Forme*> formes;
     Coordonnee ancrage;
     Etat etat;
-    int count = 0;
-    int courante;
 
     friend std::istream& operator>>(std::istream& is, Couche layer);
 };

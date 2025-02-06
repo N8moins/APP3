@@ -29,6 +29,8 @@ public:
     int Capacity() const;
     bool IsEmpty();
     bool Add(T* value);
+    void SetActive(int index);
+    T& GetActive();
 
     T& operator[] (int index);
 
@@ -88,6 +90,7 @@ bool Vector<T>::Add(T* value) {
         if (m_count == m_currentSize)
             Resize();
 
+
         m_array[m_count] = new T(*value);
         m_count++;
     }
@@ -95,6 +98,17 @@ bool Vector<T>::Add(T* value) {
         return false;
     }
     return true;
+}
+
+template<class T>
+void Vector<T>::SetActive(int index) {
+    if (index < m_count)
+        m_activatedItem = index;
+}
+
+template<class T>
+T& Vector<T>::GetActive() {
+    return *m_array[m_activatedItem];
 }
 
 template<class T>

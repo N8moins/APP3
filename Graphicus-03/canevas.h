@@ -50,7 +50,6 @@ public:
 
 private:
     Vector<Couche*> couches;
-    Couche* active;
 };
 
 #endif
