@@ -126,14 +126,22 @@ bool Canevas::activerCouche(int index)
 
 bool Canevas::coucheSuivante()
 {
+    Couche *c = couches.GetActive();
     ++couches;
+    if (c != couches.GetActive())
+        c->changerEtat(Couche::Etat::desactive);
+        couches.GetActive()->changerEtat(Couche::Etat::actif);
 
     return false;
 }
 
 bool Canevas::couchePrecedente()
 {
+    Couche* c = couches.GetActive();
     --couches;
+    if (c != couches.GetActive())
+        c->changerEtat(Couche::Etat::desactive);
+    couches.GetActive()->changerEtat(Couche::Etat::actif);
 
     return false;
 }
