@@ -37,6 +37,11 @@ public:
   bool translater(int deltaX, int deltaY);
   bool reinitialiser();
   bool changerEtat(Etat etat);
+
+  bool formePrecedente();
+  bool formeSuivante();
+  bool setActive(int index);
+
   string afficherCouche();
   Etat getEtat();
 

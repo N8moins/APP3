@@ -109,6 +109,32 @@ bool Couche::translater(int deltaX, int deltaY)
     }
 }
 
+bool Couche::formeSuivante() 
+{
+    ++formes;
+    return true;
+}
+
+bool Couche::formePrecedente()
+{
+    --formes;
+    return true;
+}
+
+bool Couche::setActive(int index)
+{
+
+    if (index == -1)
+        index = formes.Count() - 1;
+    if (index >= formes.Count() || index < 0)
+        return false;
+    if (formes[index] == formes.GetActive())
+        return false;
+
+    formes.SetActive(index);
+    return true;
+}
+
 bool Couche::reinitialiser()
 {
     if (etat == Couche::Etat::Initialise)

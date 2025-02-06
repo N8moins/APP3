@@ -126,6 +126,9 @@ bool Canevas::activerCouche(int index)
 
 bool Canevas::coucheSuivante()
 {
+    if (couches.Count() == 0)
+        return false;
+
     Couche *c = couches.GetActive();
     ++couches;
     if (c != couches.GetActive())
@@ -137,6 +140,9 @@ bool Canevas::coucheSuivante()
 
 bool Canevas::couchePrecedente()
 {
+    if (couches.Count() == 0)
+        return false;
+
     Couche* c = couches.GetActive();
     --couches;
     if (c != couches.GetActive())
@@ -144,6 +150,40 @@ bool Canevas::couchePrecedente()
     couches.GetActive()->changerEtat(Couche::Etat::actif);
 
     return false;
+}
+
+bool Canevas::formeSuivante() {
+    if (couches.Count() == 0)
+        return false;
+
+    if (couches.GetActive() == nullptr) {
+        return false;
+    }
+
+    return couches.GetActive()->formeSuivante();
+}
+
+bool Canevas::formePrecedente() {
+    if (couches.Count() == 0)
+        return false;
+
+    if (couches.GetActive() == nullptr) {
+        return false;
+    }
+
+    return couches.GetActive()->formePrecedente();
+
+}
+
+bool Canevas::formeActive(int index) {
+    if (couches.Count() == 0)
+        return false;
+
+    if (couches.GetActive() == nullptr) {
+        return false;
+    }
+
+    return couches.GetActive()->setActive(index);
 }
 
 bool Canevas::desactiverCouche(int index)
