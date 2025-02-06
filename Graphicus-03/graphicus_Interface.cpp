@@ -149,10 +149,13 @@ bool graphicus_Interface::sauvegarderFichier(const char* fileName) {
 	}
 }
 
-bool graphicus_Interface::ouvrirFichier() {
+bool graphicus_Interface::ouvrirFichier(const char* fileName) {
 	try
 	{
-		
+		std::ifstream file(fileName);
+		if (file.is_open()) {
+			file >> canevas.getCouches();
+		}
 
 		return true;
 	}

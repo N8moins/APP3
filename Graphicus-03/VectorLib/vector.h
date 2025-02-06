@@ -48,6 +48,8 @@ public:
         Add(&item);
     };
 
+    Vector<std::string> Split(std::string input, char divider);
+
 private:
     int m_initialSize = 2;
     int m_currentSize = m_initialSize;
@@ -57,14 +59,13 @@ private:
 
     void Resize();
     T* Get(int index);
-    Vector<int> Split(std::string input, char divider);
     
     // Déclarez les fonctions amies à l'intérieur de la classe
     template<class U>
     friend std::ostream& operator<<(std::ostream& os, const Vector<U>& vector);
 
     template<class U>
-    friend std::istream& operator>>(std::istream& is, Vector<U>& vector);
+    friend std::istream& operator>>(std::istream& is, Vector<T *>& vector);
 };
 
 template<class T>
@@ -183,7 +184,7 @@ void Vector<T>::Display(std::ostream& s) {
 }
 
 template<class T>
-Vector<int> Vector<T>::Split(std::string input, char divider) {
+Vector<std::string> Vector<T>::Split(std::string input, char divider) {
     Vector<int> values;
     size_t pos;
     while ((pos = input.find(divider)) != std::string::npos) {
@@ -193,6 +194,7 @@ Vector<int> Vector<T>::Split(std::string input, char divider) {
     values += std::stoi(input);
     return values;
 }
+
 template<class T>
 std::ostream& operator<<(std::ostream& os, const Vector<T>& vector) {
     for (int i = 0; i < vector.m_count; ++i) {
@@ -203,7 +205,7 @@ std::ostream& operator<<(std::ostream& os, const Vector<T>& vector) {
 }
 
 template<class T>
-std::istream& operator>>(std::istream& is, Vector<T>& vector) {
+std::istream& operator>>(std::istream& is, Vector<T *>& vector) {
     std::stringstream ss;
     ss << is.rdbuf();
     std::string text = ss.str();

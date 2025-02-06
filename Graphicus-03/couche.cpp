@@ -192,11 +192,10 @@ std::ostream& operator<<(std::ostream& os, Couche* layer) {
 }
 
 
-std::istream& operator>>(std::istream& is, Couche& layer) {
+std::istream& operator>>(std::istream& is, Couche* layer) {
     std::string line;
     while (std::getline(is, line)) {
 
-        Couche* layer = new Couche();
         if (line.find('a') != std::string::npos)
             layer->changerEtat(Couche::Etat::actif);
         else if (line.find('i') != std::string::npos)

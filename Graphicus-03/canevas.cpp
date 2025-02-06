@@ -246,7 +246,7 @@ bool Canevas::translater(int deltaX, int deltaY)
     return couches.GetActive()->translater(deltaX, deltaY);
 }
 
-const Vector<Couche*> Canevas::getCouches() {
+Vector<Couche*>& Canevas::getCouches() {
     return couches;
 }
 

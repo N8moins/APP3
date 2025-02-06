@@ -26,7 +26,7 @@ public:
 	
 	void coucheAjouter();
 	bool sauvegarderFichier(const char* fileName);
-	bool ouvrirFichier();
+	bool ouvrirFichier(const char* fileName);
 	void coucheRetirer();
 	void retirerForme();
 	void couchePremiere();

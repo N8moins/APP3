@@ -51,7 +51,7 @@ private:
     Etat etat;
 
     friend std::ostream& operator<<(std::ostream& os, Couche* layer);
-    friend std::istream& operator>>(std::istream& is, Couche layer);
+    friend std::istream& operator>>(std::istream& is, Couche* layer);
 };
 
 #endif
