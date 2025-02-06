@@ -149,7 +149,7 @@ string Couche::afficherCouche()
         etat == Couche::Etat::desactive ? "x" : "i") << endl;
     if (!count)
     {
-        return "";
+        return os.str().c_str();
     }
     else
     {

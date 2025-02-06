@@ -38,11 +38,6 @@ bool Canevas::ajouterCouche()
 
     couches += tmp;
 
-    for (int i = 0; i < couches.Count(); i++)
-    {
-        std::cout << couches[i]->afficherCouche();
-    }
-
     return true;
 }
 
