@@ -195,64 +195,83 @@ std::ostream& operator<<(std::ostream& os, Couche* layer) {
 std::istream& operator>>(std::istream& is, Couche* layer) {
     char c;
     std::string number = "";
-    Vector<int> values;
-    layer = new Couche();
     while (is.get(c)) {
-        std::cout << c;
         if (c == 'a')
             layer->changerEtat(Couche::Etat::actif);
         else if (c == 'i')
             layer->changerEtat(Couche::Etat::Initialise);
         else if (c == 'x')
             layer->changerEtat(Couche::Etat::desactive);
-        else if (c == 'R') {
-            is.get(c);
-            while (c != '\n')
-            {
-                if (c == ' ' && number != "") {
-                    values += std::stoi(number);
-                }
-                else if (c != ' ') {
-                    number += c;
-                }
-                is.get(c);
-            }
-
-            layer->ajouterForme(new Rectangle(values[0], values[1], values[2], values[3]));
-        }
         else if (c == 'K') {
-            is.get(c);
-            while (c != '\n')
-            {
-                if (c == ' ' && number != "") {
-                    values += std::stoi(number);
+            is.get();
+            int* array = new int[3];
+
+            int i = 0;
+            while (is.get(c)) {
+                if (c == '\n') {
+                    array[i] = std::stoi(number);
                     number = "";
+                    break;
                 }
-                else if (c != ' ') {
+                if (c == ' ') {
+                    array[i] = std::stoi(number);
+                    number = "";
+                    i++;
+                }
+                else {
                     number += c;
                 }
-                is.get(c);
             }
-            values += std::stoi(number);
-            number = "";
-            layer->ajouterForme(new Carre(values[0], values[1], values[2]));
+            layer->ajouterForme(new Carre(array[0], array[1], array[2]));
+            delete[] array;
         }
         else if (c == 'C') {
-            is.get(c);
-            while (c != '\n')
-            {
-                if (c == ' ' && number != "") {
-                    values += std::stoi(number);
+            is.get();
+
+            int* array = new int[3];
+            int i = 0;
+            while (is.get(c)) {
+                if (c == '\n') {
+                    array[i] = std::stoi(number);
+                    number = "";
+                    break;
                 }
-                else if (c != ' ') {
+                if (c == ' ') {
+                    array[i] = std::stoi(number);
+                    number = "";
+                    i++;
+                }
+                else {
                     number += c;
                 }
-                is.get(c);
             }
-
-            layer->ajouterForme(new Rectangle(values[0], values[1], values[2]));
+            layer->ajouterForme(new Cercle(array[0], array[1], array[2]));
+            delete[] array;
         }
-        else if(c =='L' || c == EOF)
+        else if (c == 'R') {
+            is.get();
+            int* array = new int[4];
+
+            int i = 0;
+            while (is.get(c)) {
+                if (c == '\n') {
+                    array[i] = std::stoi(number);
+                    number = "";
+                    break;
+                }
+                if (c == ' ') {
+                    array[i] = std::stoi(number);
+                    number = "";
+                    i++;
+                }
+                else {
+                    number += c;
+                }
+            }
+            layer->ajouterForme(new Rectangle(array[0], array[1], array[2], array[3]));
+            delete[] array;
+        }
+        else if (c == 'L' || c == EOF)
             return is;
     }
     return is;

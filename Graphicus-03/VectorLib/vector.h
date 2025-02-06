@@ -211,12 +211,11 @@ std::istream& operator>>(std::istream& is, Vector<T *>& vector) {
     int i = 0;
     char c;
     while ((c = is.get()) != EOF){
-        std::cout << c;
-        if (c == 'L') {
+        std::cout << "PENIS" << std::endl;
             vector += new T();
             is >> vector[i];
             ++i;
-        }
+       
     }
     return is;
 }
