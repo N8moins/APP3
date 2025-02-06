@@ -91,7 +91,7 @@ bool Canevas::reinitialiser()
 
         return true;
     }
-    catch (const std::exception &e)
+    catch (const std::exception&)
     {
         return false;
     }
@@ -228,6 +228,10 @@ bool Canevas::translater(int deltaX, int deltaY)
         return false;
 
     return active->translater(deltaX, deltaY);
+}
+
+const Vector<Couche*> Canevas::getCouches() {
+    return couches;
 }
 
 ostringstream Canevas::afficher()

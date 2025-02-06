@@ -9,6 +9,7 @@
 ********/
 
 #include <sstream>
+#include <fstream>
 #include "./graphicus_Interface.h"
 #include "../Graphicus-03/Formes/carre.h"
 #include "../Graphicus-03/Formes/rectangle.h"
@@ -107,3 +108,32 @@ void graphicus_Interface::preDraw()
 	
 }
 
+bool graphicus_Interface::sauvegarderFichier(const char* fileName) {
+	try
+	{
+		std::ofstream file(fileName);
+		if (file.is_open()) {
+			file << canevas.getCouches();
+		}
+
+		std::cout << "saved successfuly" << std::endl;
+		return true;
+	}
+	catch (const std::exception&)
+	{
+		return false;
+	}
+}
+
+bool graphicus_Interface::ouvrirFichier() {
+	try
+	{
+		
+
+		return true;
+	}
+	catch (const std::exception&)
+	{
+		return false;
+	}
+}

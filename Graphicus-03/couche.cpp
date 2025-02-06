@@ -17,7 +17,6 @@
 
 Couche::Couche()
 {
-    
     etat = Couche::Etat::Initialise;
 }
 
@@ -173,6 +172,11 @@ Vector<int> Split(std::string input, char divider) {
     values += std::stoi(input);
     return values;
 }
+
+std::ostream& operator<<(std::ostream& os, Couche* layer) {
+    return os << layer->afficherCouche();
+}
+
 
 std::istream& operator>>(std::istream& is, Couche& layer) {
     std::string line;

@@ -47,6 +47,7 @@ private:
     int count = 0;
     int courante;
 
+    friend std::ostream& operator<<(std::ostream& os, Couche* layer);
     friend std::istream& operator>>(std::istream& is, Couche layer);
 };
 

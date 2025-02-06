@@ -91,7 +91,7 @@ bool Vector<T>::Add(T* value) {
         m_array[m_count] = new T(*value);
         m_count++;
     }
-    catch (const std::exception& e) {
+    catch (const std::exception&) {
         return false;
     }
     return true;
@@ -182,7 +182,8 @@ Vector<int> Vector<T>::Split(std::string input, char divider) {
 template<class T>
 std::ostream& operator<<(std::ostream& os, const Vector<T>& vector) {
     for (int i = 0; i < vector.m_count; ++i) {
-        os << vector.m_array[i] << "\n";
+        T* layer = vector.m_array[i];
+        os << layer << "\n";
     }
     return os << std::endl;
 }

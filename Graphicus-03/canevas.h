@@ -35,6 +35,7 @@ public:
    bool desactiverCouche(int index);
 
    Couche getCouche(int index);
+   const Vector<Couche*> getCouches();
 
    bool ajouterForme(Forme *p_forme);
    bool retirerForme(int index = -1);

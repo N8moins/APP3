@@ -25,6 +25,8 @@ public:
 	void reinitialiserCanevas();
 	
 	void coucheAjouter();
+	bool sauvegarderFichier(const char* fileName);
+	bool ouvrirFichier();
 	void coucheRetirer();
 	void retirerForme();
 	void couchePremiere();
